@@ -10,24 +10,24 @@ public class Triangle {
   private int sideC;
 
 
-  public Triangle(int sideA, int sideB, int sideC) throws IllegalAccessException {
-    this.sideA = checkSide(sideA);
-    this.sideB = checkSide(sideB);
-    this.sideC = checkSide(sideC);
-
-  }
-  static int checkSide(int side) throws IllegalAccessException {
-    if (side<0){
-      throw new IllegalAccessException("Сторона должны быть положителна :"+side);
-    }return side;
-  }
-  public boolean checkSides(int a, int b, int c) {
-    //Каждая сторона треугольника меньше суммы двух других сторон.
-
-    if (this.sideA + this.sideB > this.sideC && this.sideC + this.sideB > this.sideA
-        && this.sideA + this.sideC > this.sideB) {
-
+  public Triangle(int sideA, int sideB, int sideC) {
+    if (sideA>0){
+    this.sideA = sideA;
+    } else {
+      System.out.println("Сторона должна быть положительной: " + sideA);
     }
-    return true;
+    if (sideB>0){
+    this.sideB = sideB;
+    } else {
+      System.out.println("Сторона должна быть положительной: " + sideB);
+    }
+    if (sideC>0){
+    this.sideC = sideC;
+    } else {
+      System.out.println("Сторона должна быть положительной: " + sideC);
+    }
+  }
+  public static boolean checkSides(int a, int b, int c) {
+    return (a < b + c) && (b < a + c) && (c < a + b);// Idea подкорригировала
   }
 }
